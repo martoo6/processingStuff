@@ -1,0 +1,19 @@
+Hi there !
+
+To install the PHP scripts of the Share library :
+
+	1.Database :
+		- Open your favourite SQL manger (phpMyAdmin, SQLiteManager …)
+		- Go into your favourite database or create one
+		- Open the file php/install.sql inside the library's folder
+		- Copy the content of install.sql and paste it in the SQL field allowing you to run requests (in your SQL manager)
+		- Run the request
+		- Two tables should appear in the table list : likes(ip, id, mark) and talks(id, talk_id, message)
+	2. PHP
+		- Connect to your web server with FTP or SFTP (using Filezilla or other…)
+		- Copy the files in the php folder of the library's folder (except install.sql)
+		- Paste them on your web server, in the folder you want
+	3. Processing
+		- Use new Talk() and new Like() with your web server URL follow by the folder you put the PHP inside
+
+And it'll work.

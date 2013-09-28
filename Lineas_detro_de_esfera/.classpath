@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="lib" path="/home/martin/processing-1.5.1/modes/java/libraries/opengl/library/opengl.jar"/>
+	<classpathentry kind="src" path="generated/preproc"/>
+	<classpathentry kind="lib" path="/home/martin/eclipse jee/plugins/processing.plugin.core_0.2.5.1/Resources/lib/core.jar"/>
+	<classpathentry kind="con" path="/org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-6-openjdk-amd64"/>
+	<classpathentry kind="lib" path="/home/martin/processing-1.5.1/modes/java/libraries/opengl/library/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="/home/martin/processing-1.5.1/modes/java/libraries/opengl/library/jogl.jar"/>
+	<classpathentry kind="lib" path="/home/martin/processing-1.5.1/modes/java/libraries/opengl/jogl-src.zip"/>
+	<classpathentry kind="output" path="generated/compiler"/>
+</classpath>

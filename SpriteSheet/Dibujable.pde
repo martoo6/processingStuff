@@ -1,0 +1,3 @@
+interface Dibujable{
+  void display();
+}
