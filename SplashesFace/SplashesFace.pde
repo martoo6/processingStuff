@@ -2,10 +2,9 @@ ArrayList<PImage> splashes = new ArrayList<PImage>();
 PImage face;
 
 void setup(){
-  size(1024,768);
   face = loadImage("face.jpg");
   face.filter(THRESHOLD);
-  
+  size(face.width,face.height);
   
   File[] files = listFiles(sketchPath+"/splashes");
   for(File f:files) splashes.add(loadImage(f.getAbsolutePath()));
