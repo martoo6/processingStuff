@@ -8,13 +8,16 @@ void setup() {
   // Start capturing the images from the camera 
   mov = new Movie(this, "ad.mp4");
   mov.loop();
+  mov.read();
+  int w =1280;
+  int h =720;
   mov.volume(0); //Uncomment if you want to hear the audio
  
- img = createGraphics(480, 360); 
+  img = createGraphics(w,h); 
   background(0); 
   smooth(); 
   fill(255); 
-  size(480, 360); 
+  size(w, h); 
   for (int i=0;i<60000;i++) particles.add(new Particle());
 } 
 
@@ -52,10 +55,16 @@ class Particle {
     pos = new PVector(); 
     pos.x = (int)random(width); 
     pos.y = (int)random(height); 
-    while (brightness (mov.get ( (int)pos.x, (int)pos.y))>50) { 
+    int atemps=0;
+    while (brightness (mov.get ( (int)map(pos.x,0,width,0,mov.width), (int)map(pos.y,0,height,0,mov.height)))>50 && atemps < 10) { 
       pos.x = (int)random(width); 
       pos.y = (int)random(height);
+      atemps++;
     }
+    if(atemps==10) {
+      pos.x=-1;
+      pos.y=0;
+    } 
   } 
   void update() { 
     lifeTime--; 
