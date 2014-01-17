@@ -1,6 +1,6 @@
 PGraphics img;
 ArrayList<Particle> particles = new ArrayList<Particle>();
-
+final color white = color(255);
 
 void setup() {
   img = createGraphics(1200, 600);
@@ -32,6 +32,7 @@ class Particle
 {
   PVector pos;
   float speed;
+  int lifeTime;
   
   // Constructor
   Particle() {
@@ -39,6 +40,7 @@ class Particle
   }
 
   void reset(){
+    lifeTime= (int)random(2,20);
     speed=1;
     pos = new PVector();
     pos.x = (int)random(width);
@@ -52,11 +54,12 @@ class Particle
   void update(){
     pos.y+=speed;
     speed*=1.3;
-    if(pos.y > height) reset();
+    lifeTime--;
+    if(pos.y > height || lifeTime ==0) reset();
   }
 
   void display() {
-      point(pos.x, pos.y);
+      set((int)pos.x, (int)pos.y, white);
   }
 
 }

@@ -1,8 +1,8 @@
 int MAXLINES=100;
 float strokeline=2;
 float[][] lala = new float[2000+1][2];
-float numFrames = 50;
 float []opacidad = {0,55,125,255};
+boolean record=false;
 
 void setup(){
   size(800,600);
@@ -32,12 +32,13 @@ void draw(){
     stroke(255,opacidad[(int)random(3)]);
     line(lala[i][0]*inc*3,lala[i][1]*inc*3,lala[i][0]*inc*4,lala[i][1]*inc*4);
   }
-  if (frameCount <= numFrames) {
+  if (record) {
     saveFrame("circles-####.tif");
   }
 }
 
 void keyPressed() {
+  if (key == 'r' || key == 'R') record=!record;  
   if (key == CODED) {
     if (keyCode == UP) {
       if(MAXLINES<=1997){

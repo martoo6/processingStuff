@@ -5,7 +5,7 @@ ArrayList<Walker> walkers= new ArrayList<Walker>();
 void setup() {
   size(displayWidth, displayHeight);
   background(0);
-  stroke(255,10);
+  stroke(255,100);
   for (int i=0;i<100;i++) walkers.add(new Walker());
 }
 
