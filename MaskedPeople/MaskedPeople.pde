@@ -3,9 +3,18 @@ import processing.video.*;
 Movie mov; 
 boolean cheatScreen; 
 PImage img;
+PImage mskImg;
+PShader mskShader;
+PGraphics g; 
   
 void setup() { 
-  size(displayWidth, displayHeight);
+  size(1024, 768, P2D);
+
+  mskImg = createImage(width, height, ARGB);
+  
+
+  mskShader = loadShader("mask.glsl");
+  mskShader.set("mask", mskImg);
   
   // Start capturing the images from the camera 
   mov = new Movie(this, "ad.mp4");
@@ -14,7 +23,9 @@ void setup() {
   
   mov.volume(0); //Uncomment if you want to hear the audio
   
-  img = loadImage("stars.jpeg");   
+  img = loadImage("stars.jpeg");
+
+  g = createGraphics(width, height, P2D);
 } 
 
 void draw() {
@@ -22,25 +33,20 @@ void draw() {
     background(0);
     mov.read();
         
-    final PImage tmpImg = img.get((width/2)+round(sin(frameCount*0.03)*width*0.25),0,width,height); 
-    //tmpImg.tint();
-    PGraphics g = createGraphics(width,height);
+    final int despX = round(sin(frameCount*0.03)*width*0.25);
+    final int despY = round(sin(frameCount*0.07)*height*0.25);
+    final PImage tmpImg = img.get(width/4+despX,height/4+despY,width,height);   
     
-    PImage tmpImg2 = createImage(width, height, ARGB); 
-    tmpImg2.copy(mov,0,0, mov.width, mov.height, 0,0, width, height);//This does the resize itself
-    //tmpImg2.filter(BLUR);
+    mskImg.copy(mov,0,0, mov.width, mov.height, 0,0, width, height);//This does the resize itself
     
-    mov.loadPixels();
-    tmpImg2.loadPixels();
-    tmpImg.loadPixels();
+    mskShader.set("mask", mskImg);
     g.beginDraw();
-      g.loadPixels();
-        for(int i=0;i<g.pixels.length;i++) if(brightness(tmpImg2.pixels[i])<1) g.pixels[i] = tmpImg.pixels[i];
-      g.updatePixels();
+      g.background(0);
+      g.shader(mskShader);
+      g.image(tmpImg, 0, 0, width, height);
     g.endDraw();
     
-    
-    set(0, 0, g);
+    image(g,0,0);
     if(cheatScreen) set(0, 0, mov);
   }
   text(frameRate, 20, 20);
@@ -56,4 +62,3 @@ void keyPressed() {
     break;
   }
 }
-
