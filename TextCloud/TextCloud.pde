@@ -56,7 +56,7 @@ void calculateCloud() {
     int totalNumOfTries = 0;
     PGraphics tmpImg = getImageFromText(text[i], textSize);
     PVector pos = new PVector(random(0, width-tmpImg.width), random(0, height-tmpImg.height));
-    while (gridColision (pos, tmpImg) && perPixelColision(tmpImg, pos, compositeImage) && totalNumOfTries<CONST_TOTAL_TRIES) {
+    while (/*gridColision (pos, tmpImg) && */perPixelColision(tmpImg, pos, compositeImage) && totalNumOfTries<CONST_TOTAL_TRIES) {
       totalNumOfTries++;
       if (totalNumOfTries%CONST_TRIES==0) textSize/=1.3;
       tmpImg = getImageFromText(text[i], textSize);

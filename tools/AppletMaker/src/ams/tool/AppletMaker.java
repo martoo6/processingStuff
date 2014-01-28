@@ -19,7 +19,7 @@
  * Boston, MA  02111-1307  USA
  * 
  * @author		Peter Lager http://www.lagers.org.uk
- * @modified	03/16/2013
+ * @modified	12/25/2013
  * @version		##version##
  */
 
@@ -66,7 +66,7 @@ public class AppletMaker implements Tool {
 	 */
 	public void run() {
 		System.out.println("===================================================");
-		System.out.println("   AppletMaker V0.1.2 created by Peter Lager");
+		System.out.println("   AppletMaker V0.1.3 created by Peter Lager");
 		System.out.println("===================================================");
 
 		AppletBuildDetail ab = new AppletBuildDetail(editor.getSketch());

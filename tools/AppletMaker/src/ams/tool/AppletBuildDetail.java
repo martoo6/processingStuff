@@ -194,7 +194,7 @@ public class AppletBuildDetail extends JavaBuild implements ABconstants  {
 			String sketchRenderer = sizeInfo[3];
 			if (sketchRenderer != null) {
 				if (sketchRenderer.equals("P2D") || sketchRenderer.equals("P3D") || sketchRenderer.equals("OPENGL")) {
-					Base.showWarning("Invalid renderer", "Sketch must use the default Java2D renderer", null);
+					Base.showWarning("Invalid renderer", "Sketch must use the default Java2D renderer", (Exception) null);
 					return false;
 				}
 			}
@@ -205,7 +205,7 @@ public class AppletBuildDetail extends JavaBuild implements ABconstants  {
 				"The size of this applet could not automatically\n" +
 				"be determined from your code. You'll have to edit\n" +
 				"these in the Export Applet dialog window.";
-			Base.showWarning("Could not find applet size", message, null);
+			Base.showWarning("Could not find applet size", message, (Exception) null);
 		}
 		return true;
 	}
@@ -213,7 +213,7 @@ public class AppletBuildDetail extends JavaBuild implements ABconstants  {
 
 	public boolean isInJavaMode(){
 		if(!(mode instanceof JavaMode)){
-			Base.showWarning("Invalid mode", "The sketch must be in JAVA mode.", null);
+			Base.showWarning("Invalid mode", "The sketch must be in JAVA mode.", (Exception) null);
 			return false;
 		}
 		return true;
@@ -230,6 +230,7 @@ public class AppletBuildDetail extends JavaBuild implements ABconstants  {
 		try {
 			foundName = build(srcFolder, binFolder, true);
 		} catch (SketchException e) {
+			Base.showWarning("Compiler Error", "The sketch code has errors.", (Exception) null);
 			return false;
 		}
 
@@ -241,7 +242,7 @@ public class AppletBuildDetail extends JavaBuild implements ABconstants  {
 		if (!sketch.getName().equals(foundName)) {
 			Base.showWarning("Error during export",
 					"Sketch name is " + sketch.getName() + " but the\n" +
-					"name found in the code was " + foundName + ".", null);
+					"name found in the code was " + foundName + ".", (Exception) null);
 			return false;
 		}
 		return true;

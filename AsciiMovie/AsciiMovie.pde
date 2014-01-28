@@ -39,8 +39,8 @@ void draw() {
       for(int e=0;e<height;e+=cellSize){
         color c = mov.get(i,e);
         float b=brightness(c);
-        //fill(c);
-        fill(255);
+        fill(c);
+        //fill(255);
         text(getChar(b),i,e);
       }
     }

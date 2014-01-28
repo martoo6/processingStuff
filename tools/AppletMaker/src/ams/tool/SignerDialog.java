@@ -88,7 +88,7 @@ public class SignerDialog extends javax.swing.JDialog  implements ABconstants {
 		sp.loadFromTSV(signingDetailFile);
 		// Get country codes
 		String[] items = PApplet.loadStrings(cCodesFile);
-		cbxC.setModel(new DefaultComboBoxModel<String>(items));
+		cbxC.setModel(new DefaultComboBoxModel(items));
 
 		txfCN.setText(sp.get("CN"));
 		txfOU.setText(sp.get("OU"));
