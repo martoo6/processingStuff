@@ -13,7 +13,7 @@ int brightnessMin;
 Range range;
 
 void setup() {
-  video = new Capture(this, 1280, 720, 30);
+  video = new Capture(this, 640, 480, 30);
   img = createGraphics(1280, 720);
   // Start capturing the images from the camera
   video.start();
