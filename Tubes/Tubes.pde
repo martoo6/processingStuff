@@ -7,9 +7,11 @@ void setup(){
   background(0 );
   strokeWeight(4);
   stroke(255, 100);
+  stateConfigurator();
 }
 
-void stateConfigurator(){
+void stateConfigurator(){              
+  
   State stateUp = new State("Up", new PVector(0,-1));
   
   State stateDown = new State("Down", new PVector(0,1));
@@ -39,7 +41,7 @@ void stateConfigurator(){
 
 void draw(){
   float step = random(10,20);
-  State nextState = currentState.nextState.get((int)(random(currentState.nextState.size())));
+  State nextState = currentState.nextState.get(floor(random(3)));
   PVector c = currentState.mov.get( );
   PVector n = nextState.mov.get();
   c.mult(step);
