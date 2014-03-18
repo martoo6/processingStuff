@@ -117,7 +117,10 @@ class nonRealisticForce implements Force{
     for (int i=0;i<atts.length;i++) {
       PVector force = PVector.sub(atts[i].pos, p.pos);
       float dist = force.mag();
-      if(dist<10) p.reset();
+      if(dist<10) {
+        p.reset();
+        return new PVector(0,0);
+      }
       force.normalize();
       force.mult(atts[i].strength*10/dist);
       sum.add(force);
@@ -133,7 +136,10 @@ class realisticForce implements Force{
     for (int i=0;i<atts.length;i++) {
       PVector force = PVector.sub(atts[i].pos, p.pos);
       float dist = force.mag();
-      if(dist<10) p.reset();
+      if(dist<10) {
+        p.reset();
+        return new PVector(0,0);
+      }
       force.normalize();
       force.mult(atts[i].strength*1000/(dist*dist)); //More realistic, just like newtons gravtity ecuation
       sum.add(force);
