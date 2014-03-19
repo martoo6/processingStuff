@@ -18,7 +18,6 @@ void setup() {
   size(1280, 720, P3D);
   img = loadImage("map.png");
   img.resize(1500,1500);
-  noStroke();
   String[] s = loadStrings("librerias.csv");
   for(String ss:s) {
     String[] tokens = splitTokens(ss,",\"");
@@ -59,15 +58,32 @@ void draw() {
   rotateY(frameCount*0.01);
   
   stroke(255);
+  noFill();
+  
   for(int i=0;i<100;i++) {
     Location l1= locations.get(floor(noise(i)*(locations.size()-1)));
     Location l2= locations.get(floor(noise(i+10)*(locations.size()-1)));
     PVector p1 = l1.pos;
     PVector p2 = l2.pos;
     PVector p3 = PVector.lerp(p1,p2, 0.5);
-    if(i==1) println(p1,p2,p3);
-    line(p1.x, 0, p1.y, p3.x, -200, p3.y);
-    line(p2.x, 0, p2.y, p3.x, -200, p3.y);
+    
+    float x1= map(p1.x, leftLimit, rightLimit, -zoom, zoom);
+    float z1 = map(p1.y, bottomLimit, topLimit, -zoom, zoom);
+    
+    float x2= map(p2.x, leftLimit, rightLimit, -zoom, zoom);
+    float z2 = map(p2.y, bottomLimit, topLimit, -zoom, zoom);
+    
+    
+    
+    float dist= p1.dist(p2)*1000;
+    
+    //Diferent style, more calcs
+    //float x3= map(p3.x, leftLimit, rightLimit, -zoom, zoom);
+    //float z3 = map(p3.y, bottomLimit, topLimit, -zoom, zoom);
+    //bezier(x1, 0, z1, x3, -dist, z3, x3, -dist, z3, x2, 0, z2);
+    
+    bezier(x1, 0, z1, x1, -dist, z1, x2, -dist, z2, x2, 0, z2);
+    
     //bezier(p1.x,0,p1.y, p3.x,-200,p3.y, p3.x,-200,p3.y, p2.x,0,p2.y);
   }
   
