@@ -60,7 +60,7 @@ void draw() {
   stroke(255);
   noFill();
   
-  for(int i=0;i<100;i++) {
+  for(int i=0;i<1000;i++) {
     Location l1= locations.get(floor(noise(i)*(locations.size()-1)));
     Location l2= locations.get(floor(noise(i+10)*(locations.size()-1)));
     PVector p1 = l1.pos;
