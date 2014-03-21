@@ -21,7 +21,7 @@ void setup() {
   mov = new Movie(this, "video.mp4");
   mov.loop();
   if (mov.available()) mov.read();
-  mov.volume(0); //Uncomment if you want to hear the audio
+  mov.volume(100); //Uncomment if you want to hear the audio
  
   background(255); 
   smooth(); 
