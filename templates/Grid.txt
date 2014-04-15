@@ -1,0 +1,15 @@
+int hs[][];
+
+void setup(){
+  size(800,600);
+  background(0);
+  hs=new int[width][height];
+}
+
+void draw(){
+  for(int y=0;y<height;y++){
+    for(int x=0;x<height;x++){
+  
+    }
+  }
+}
