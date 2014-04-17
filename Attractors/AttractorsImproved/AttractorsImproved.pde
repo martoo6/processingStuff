@@ -2,7 +2,7 @@ import gifAnimation.*;
 GifMaker gifExport;
 int P_COUNT=5000;
 
-Attractor[] atts = new Attractor[50];  
+Attractor[] atts = new Attractor[20];  
 Particle[] pts = new Particle[P_COUNT];
 
 //Force f = new nonRealisticForce();

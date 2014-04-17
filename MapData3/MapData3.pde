@@ -6,6 +6,8 @@ import peasy.org.apache.commons.math.geometry.*;
 PImage img;
 final int zoom=400;
 ArrayList<Location> locations = new ArrayList<Location>();
+PShape map;
+
 
 PeasyCam cam;
 
@@ -16,6 +18,7 @@ void setup() {
   cam.setMaximumDistance(5500);
   cam.rotateX(PI/4);
   String[] s = loadStrings("comunas.csv");
+  map = loadShape("argentina.svg");
   float topLimit=-Float.MAX_VALUE, bottomLimit=Float.MAX_VALUE, rightLimit=-Float.MAX_VALUE, leftLimit=Float.MAX_VALUE;
   for (int e=1;e<s.length;e++) {
 
@@ -116,3 +119,5 @@ class Location {
     return this;
   }
 }
+
+  

@@ -6,7 +6,7 @@ Attractor[] atts = new Attractor[2];
 Particle[] pts = new Particle[P_COUNT];
 
 //Force f = new nonRealisticForce();
-Force f = new realisticForce(); 
+Force f = new realisticForce();
 
 int state=0;
 Boolean showAttractors=false;
