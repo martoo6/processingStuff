@@ -1,47 +1,52 @@
 Fmath fMath = new Fmath();
-final float step = PI/32;
-final float stepZ = 5;
+final float step = PI/16;
+final float stepZ = 50;
+final int r = 200; //Radius
 
 void setup() {
   size(500, 500, P3D);
+  colorMode(HSB );
   background(0 );
   noStroke();
 }
 
 void draw() {
   background(0);
-  //lights();
   translate(width/2, height/2, 0);
   for(int i=-1000;i<250;i+=stepZ) {
-    fill(map(i,-600,200,0,255));
     float x1 = sin(i*0.01+frameCount*0.1)*50;
     float x2 = sin((i+stepZ)*0.01+frameCount*0.1)*50;
     drawStripe(x1,x2,i, stepZ);
   }
-  saveFrame("###.png" );
+  if(frameCount*0.1<TWO_PI) saveFrame("a####.png" );
   //text(frameRate,0,0);
 }
 
 void drawStripe(float x1, float x2,float z, float w/*width*/) {
+  int c = 100;
   beginShape(TRIANGLE_STRIP);
   pushMatrix();
   translate(0, 0, z);
   for (float i=0;i<TWO_PI; i+=step) {
-    float x = fMath.cosine(i)*200;
-    float y = fMath.sine(i)*200;
+    float x = fMath.cosine(i)*r;
+    float y = fMath.sine(i)*r;
     x+=x1;
+    fill(c,255,map(z,-1000,200,0,255));//Per vertex color dude !
     vertex(x, y, 0);
-    x = fMath.cosine(i)*200;
-    y = fMath.sine(i)*200;
+    x = fMath.cosine(i)*r;
+    y = fMath.sine(i)*r;
     x+=x2;
+    fill(c,255,map(z+w,-1000,200,0,255));
     vertex(x, y, w);
-    x = fMath.cosine(i+step)*200;
-    y = fMath.sine(i+step)*200;
+    x = fMath.cosine(i+step)*r;
+    y = fMath.sine(i+step)*r;
     x+=x1;
+    fill(c,255,map(z,-1000,200,0,255));
     vertex(x, y, 0);
-    x = fMath.cosine(i+step)*200;
-    y = fMath.sine(i+step)*200;
+    x = fMath.cosine(i+step)*r;
+    y = fMath.sine(i+step)*r;
     x+=x2;
+    fill(c,255,map(z+w,-1000,200,0,255));
     vertex(x, y, w);
     endShape();
   }
