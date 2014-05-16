@@ -9,6 +9,8 @@ int distPoints=5;
 Boolean b=true;
 ArrayList<PVector> initPos = new ArrayList<PVector> (); 
 PImage img;
+Boolean sf=false;
+
 
 void setup(){
   img = loadImage("http://www.culture24.org.uk/asset_arena/0/99/88/188990/v0_master.jpg");
@@ -44,6 +46,11 @@ void draw(){
     }
     endShape();
   }
+  if(sf) saveFrame("a####.png");
+}
+
+void keyPressed(){
+  if(key =='s' || key =='S') sf=!sf;
 }
 
 void mousePressed(){
